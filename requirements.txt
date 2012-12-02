@@ -11,4 +11,5 @@ gunicorn==0.16.1
 paramiko==1.9.0
 psycopg2==2.4.5
 pycrypto==2.6
+pyjade==1.6
 wsgiref==0.1.2

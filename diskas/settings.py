@@ -118,13 +118,13 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 
     # dependencies
     'south',
+    'storages',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -155,12 +155,21 @@ LOGGING = {
         },
     }
 }
+##S3 Storage settings
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_ACCESS_KEY_ID = 'AKIAJ2FVPJBCTK3K5YOA'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'diskas'
 
-#heroku specifics
+STATIC_URL = 'https://s3.amazonaws.com/diskas/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+##heroku specifics
 if 'HEROKU_POSTGRESQL_IVORY_URL' in os.environ:
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()
-#local specifics
+
+##local specifics
 else:
     DATABASES = {
     'default': {
@@ -172,3 +181,4 @@ else:
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
         }
     }
+

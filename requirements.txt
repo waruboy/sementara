@@ -2,7 +2,9 @@ Django==1.4.2
 Fabric==1.5.1
 South==0.7.6
 argparse==1.2.1
+boto==2.6.0
 dj-database-url==0.2.1
+django-storages==1.1.5
 gevent==0.13.8
 greenlet==0.4.0
 gunicorn==0.16.1

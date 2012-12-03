@@ -5,8 +5,11 @@ import socket
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+import os.path
+PROJECT_DIR = os.path.join(os.path.dirname(__file__), '..')
+
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Litung8', 'litungdelapan@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -68,14 +71,16 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_DIR, 'static'),
 )
 
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    ('pyjade.ext.django.Loader',(
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )),
 )
 
 # Make this unique, and don't share it with anybody.
@@ -105,9 +110,7 @@ ROOT_URLCONF = 'diskas.urls'
 WSGI_APPLICATION = 'diskas.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_DIR, 'templates'),
 )
 
 INSTALLED_APPS = (
@@ -124,6 +127,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 
     # dependencies
+    'bootstrap_toolkit',
     'south',
     'storages',
 )

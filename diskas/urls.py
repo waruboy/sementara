@@ -4,13 +4,13 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'diskas.views.home', name='home'),
+    url(r'^$', 'umum.views.depan', name='um_depan'),
+    
     # url(r'^diskas/', include('diskas.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-
+    #django
     url(r'^admin/', include(admin.site.urls)),
 )

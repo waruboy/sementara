@@ -1,0 +1,39 @@
+{% extends 'dasar.jade' %}
+
+{%block judul_halaman %} "Kolaborasi, Manajemen, Diskas!" {% endblock %}
+
+{% block nav_tambahan %}
+form.navbar-form.pull-right(method='POST', action='/pengguna/masuk/'){% csrf_token %}
+	{{ form.email }}
+	{{ form.password }}
+	button.btn(type="submit") Masuk
+{% endblock %}
+
+{%block isi_halaman %}
+.hero-unit
+	h1 Diskas
+	p Manajemen proyek dan kolaborasi untuk usaha Anda.
+	p
+		a.btn.btn-primary.btn-large Selengkapnya »
+.row
+	.span1
+	.span6
+		h3 "Sederhana dan Tepat Guna"
+		p Diskas mempermudah komunikasi dalam kegiatan usaha Anda. Koordinasikan proyek Anda dengan semua pihak terkait dari satu tempat saja.
+	.span4
+		h2 Coba Diskas, gratis!
+		p Gunakan fitur lengkap Diskas gratis selama 30 hari.
+		.fdaftar
+			form(method='POST', action='/'){% csrf_token %}
+				{{ form.nama }}			
+				{{ form.organisasi }}
+				{{ form.email }}
+				{{ form.password }} 
+				br
+				input.btn(type='submit', value="Daftar")
+	.span1
+{% endblock %}
+
+{% block footer_kiri %}
+p 2012
+{% endblock %}

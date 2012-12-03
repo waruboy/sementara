@@ -1,0 +1,44 @@
+doctype 5
+{% load static from staticfiles %}
+{% load bootstrap_toolkit %}
+html(lang="id")
+	head
+		meta(charset="utf-8")
+		link(rel='stylesheet', href!="{% static "css/bootstrap.css" %}")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title
+			{% block judul_halaman %}{% endblock %}
+		// {% bootstrap_stylesheet_tag %}
+		style(type="text/css")
+			body {
+				padding-top: 60px;
+			}
+		link(rel='stylesheet', href!="{% static "css/bootstrap-responsive.css" %}")
+		// {% bootstrap_javascript_tag "dropdown" %}
+		{% block head_tambahan %}{% endblock %}
+	body
+		.navbar.navbar_fixed_top
+			.navbar-inner
+				.container-fluid
+					a.brand(href="/") Diskas
+					{% block nav_tambahan %}{% endblock %}
+					ul.nav 
+					
+							
+
+		.container
+			{% block isi_halaman %}{% endblock %}
+			p 
+				hr
+			footer.row
+				.span8
+					p {% block footer_kiri %}{% endblock %}
+				.span4
+					p {% block footer_kanan %}{% endblock %}
+		script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js")
+		script
+			window.jquery || document.write('<script src="{{ STATIC_URL }}js/jquery-1.8.2.min.js"><\/script>')
+		script(src!="{{ STATIC_URL }}js/bootstrap.min.js")
+
+
+
